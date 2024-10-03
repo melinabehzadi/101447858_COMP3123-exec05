@@ -61,11 +61,25 @@ app.use((err,req,res,next) => {
 **6. Explain the Purpose of `express.Router()` in the Code Above.**
 
 - Why is `express.Router()` used in Express.js applications, and how does it benefit the code structure?
-
+```
+express.Router() helps in modularizing the Express application 
+by creating route handlers in separate files. 
+It allows you to manage different routes (like /users, /products)
+ in different files, which improves code readability and organization.
+```
 **7. Error Handling in Express.js**
 
 - How would you implement error handling in the Express routes to ensure that any issues (such as file not found or server errors) are appropriately handled? Provide an example.
+```
+Error handling can be implemented using middleware, 
+like you've done with the app.use() function.
+ For instance, you can handle 404 errors like this:
+ 
+ app.use((req, res, next) => {
+  res.status(404).send('Page Not Found');
+});
 
+```
 ---
 
 #### Section C: Bonus
@@ -73,7 +87,13 @@ app.use((err,req,res,next) => {
 **7. Dynamic Port Binding in Express.js**
 
 - Explain how the `app.listen(process.env.port || 8081)` line works and why it's useful in production environments.
+```
+The line app.listen(process.env.PORT || 8081) allows the app 
+to listen on a dynamic port in production environments (like Heroku).
+ If process.env.PORT is set by the hosting environment, the app will use it. 
+ Otherwise, it falls back to 8081.
 
+```
 ---
 # Submission Guideline
  Process of creating a ZIP file, GitHub repository, and gathering screenshots as per your instructions. Here’s the step-by-step guide to complete the exercise:
